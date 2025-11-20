@@ -1,6 +1,6 @@
 # Section 3 Presentation Script: Machine Learning Models for Patient Risk Prediction
 
-## 🎯 Overview (30 seconds)
+##  Overview (30 seconds)
 
 **[SLIDE: Title - Section 3: Machine Learning Models]**
 
@@ -8,7 +8,7 @@
 
 ---
 
-## 📊 PART A: Model Development and Training
+##  PART A: Model Development and Training
 
 ### 1. Import Libraries (10 seconds)
 
@@ -61,9 +61,9 @@ X_scaled = scaler_ml.fit_transform(X)
 
 **Expected Output:**
 ```
-✓ Features standardized using StandardScaler
-✓ Mean of scaled features: 0.000000
-✓ Std of scaled features: 1.000000
+ Features standardized using StandardScaler
+ Mean of scaled features: 0.000000
+ Std of scaled features: 1.000000
 ```
 
 **SAY:**
@@ -80,8 +80,8 @@ X_scaled = scaler_ml.fit_transform(X)
 
 **Expected Output:**
 ```
-✓ Training set: 1600 samples (80.0%)
-✓ Test set: 400 samples (20.0%)
+ Training set: 1600 samples (80.0%)
+ Test set: 400 samples (20.0%)
 
 Training set class distribution:
   No Alzheimer's: 800 (50.0%)
@@ -129,17 +129,17 @@ Training set class distribution:
 
 **Expected Output:**
 ```
-🔄 Training Logistic Regression...
-  ✓ Training completed in 0.15 seconds
+ Training Logistic Regression...
+   Training completed in 0.15 seconds
 
-🔄 Training Random Forest...
-  ✓ Training completed in 2.34 seconds
+ Training Random Forest...
+   Training completed in 2.34 seconds
 
-🔄 Training Gradient Boosting...
-  ✓ Training completed in 3.21 seconds
+ Training Gradient Boosting...
+   Training completed in 3.21 seconds
 
-🔄 Training Neural Network...
-  ✓ Training completed in 4.56 seconds
+ Training Neural Network...
+   Training completed in 4.56 seconds
 ```
 
 **SAY:**
@@ -147,7 +147,7 @@ Training set class distribution:
 
 ---
 
-### 7. Model Evaluation - THE MAIN RESULTS (2 minutes) ⭐
+### 7. Model Evaluation - THE MAIN RESULTS (2 minutes) 
 
 **[SHOW: Cell 60 - Results table]**
 
@@ -159,7 +159,7 @@ Random Forest          0.9275    0.9302     0.9250   0.9276    0.9687
 Gradient Boosting      0.9400    0.9474     0.9325   0.9399    0.9723
 Neural Network         0.9150    0.9125     0.9175   0.9150    0.9589
 
-🏆 Best performing model: Gradient Boosting (ROC-AUC: 0.9723)
+ Best performing model: Gradient Boosting (ROC-AUC: 0.9723)
 ```
 
 **SAY - EXPLAIN EACH METRIC:**
@@ -280,7 +280,7 @@ Actual No Alz   188      12    ← 188 correct, 12 false alarms
 
 ---
 
-## 🔧 PART B: Hyperparameter Optimization
+##  PART B: Hyperparameter Optimization
 
 ### 1. Why Hyperparameter Tuning? (20 seconds)
 
@@ -297,12 +297,12 @@ Actual No Alz   188      12    ← 188 correct, 12 false alarms
 
 **Expected Output:**
 ```
-🔍 Parameter grid size: 576 combinations
-⚠ Using RandomizedSearchCV (testing 50 combinations)...
+ Parameter grid size: 576 combinations
+ Using RandomizedSearchCV (testing 50 combinations)...
 
-✓ Tuning completed in 234.56 seconds
+ Tuning completed in 234.56 seconds
 
-🏆 Best parameters found:
+ Best parameters found:
   n_estimators: 200
   max_depth: 30
   min_samples_split: 2
@@ -310,7 +310,7 @@ Actual No Alz   188      12    ← 188 correct, 12 false alarms
   max_features: sqrt
   bootstrap: True
 
-📊 Best cross-validation ROC-AUC: 0.9702
+ Best cross-validation ROC-AUC: 0.9702
 ```
 
 **SAY:**
@@ -327,9 +327,9 @@ Actual No Alz   188      12    ← 188 correct, 12 false alarms
 
 **Expected Output:**
 ```
-✓ Tuning completed in 312.45 seconds
+ Tuning completed in 312.45 seconds
 
-🏆 Best parameters found:
+ Best parameters found:
   n_estimators: 200
   learning_rate: 0.1
   max_depth: 5
@@ -337,7 +337,7 @@ Actual No Alz   188      12    ← 188 correct, 12 false alarms
   min_samples_leaf: 2
   subsample: 0.9
 
-📊 Best cross-validation ROC-AUC: 0.9748
+ Best cross-validation ROC-AUC: 0.9748
 ```
 
 **SAY:**
@@ -354,13 +354,13 @@ Actual No Alz   188      12    ← 188 correct, 12 false alarms
 
 **Expected Output:**
 ```
-🏆 Best parameters found:
+ Best parameters found:
   C: 10
   penalty: l2
   solver: liblinear
   max_iter: 1000
 
-📊 Best cross-validation ROC-AUC: 0.9478
+ Best cross-validation ROC-AUC: 0.9478
 ```
 
 **SAY:**
@@ -368,7 +368,7 @@ Actual No Alz   188      12    ← 188 correct, 12 false alarms
 
 ---
 
-### 5. Tuned Model Results - FINAL COMPARISON (2 minutes) ⭐⭐⭐
+### 5. Tuned Model Results - FINAL COMPARISON (2 minutes) 
 
 **[SHOW: Cell 70 - Tuned models evaluation table]**
 
@@ -381,7 +381,7 @@ Tuned Random Forest          0.9350    0.9381     0.9325   0.9353    0.9712
 Tuned Gradient Boosting      0.9475    0.9524     0.9425   0.9474    0.9789
 Tuned Logistic Regression    0.9000    0.8939     0.9062   0.9000    0.9501
 
-═══════════════════════════════════════════════════════════════════
+
 
 BASELINE vs TUNED MODEL COMPARISON
 
@@ -390,7 +390,7 @@ Random Forest        0.9687            0.9712         +0.0025      +0.26%
 Gradient Boosting    0.9723            0.9789         +0.0066      +0.68%
 Logistic Regression  0.9456            0.9501         +0.0045      +0.48%
 
-🏆 BEST OVERALL MODEL: Tuned Gradient Boosting (ROC-AUC: 0.9789)
+ BEST OVERALL MODEL: Tuned Gradient Boosting (ROC-AUC: 0.9789)
 ```
 
 **SAY - EMPHASIZE THIS:**
@@ -427,7 +427,7 @@ Logistic Regression  0.9456            0.9501         +0.0045      +0.48%
 
 ---
 
-## 💾 PART C: Model Persistence and Deployment
+##  PART C: Model Persistence and Deployment
 
 ### 1. Saving Models (30 seconds)
 
@@ -435,15 +435,15 @@ Logistic Regression  0.9456            0.9501         +0.0045      +0.48%
 
 **Expected Output:**
 ```
-✓ Saved: Tuned Random Forest
+ Saved: Tuned Random Forest
   Path: ../models/tuned_random_forest.pkl
   Size: 142.34 KB
 
-✓ Saved: Tuned Gradient Boosting
+ Saved: Tuned Gradient Boosting
   Path: ../models/tuned_gradient_boosting.pkl
   Size: 89.67 KB
 
-✓ Saved: Tuned Logistic Regression
+ Saved: Tuned Logistic Regression
   Path: ../models/tuned_logistic_regression.pkl
   Size: 2.14 KB
 ```
@@ -471,25 +471,25 @@ Logistic Regression  0.9456            0.9501         +0.0045      +0.48%
 
 **Expected Output:**
 ```
-📂 Loading best model: Tuned Gradient Boosting
+ Loading best model: Tuned Gradient Boosting
 
-✓ Model loaded successfully!
-✓ Scaler loaded successfully!
-✓ Feature names loaded successfully!
+ Model loaded successfully!
+ Scaler loaded successfully!
+ Feature names loaded successfully!
 
 Sample predictions:
 
-  Sample 1: ✓
+  Sample 1: 
     True: Alzheimer's
     Predicted: Alzheimer's
     Probability: No Alzheimer's=8.3%, Alzheimer's=91.7%
 
-  Sample 2: ✓
+  Sample 2: 
     True: No Alzheimer's
     Predicted: No Alzheimer's
     Probability: No Alzheimer's=94.2%, Alzheimer's=5.8%
 
-  Sample 3: ✗
+  Sample 3: 
     True: Alzheimer's
     Predicted: No Alzheimer's
     Probability: No Alzheimer's=52.1%, Alzheimer's=47.9%
@@ -511,13 +511,13 @@ Sample predictions:
 
 ---
 
-### 4. Feature Importance (1 minute) ⭐
+### 4. Feature Importance (1 minute) 
 
 **[SHOW: Cell 78 - Feature importance output and visualization]**
 
 **Expected Output:**
 ```
-📊 Top 15 Most Important Features (Tuned Gradient Boosting):
+ Top 15 Most Important Features (Tuned Gradient Boosting):
 
 Feature                        Importance
 MMSE                          0.1843
@@ -559,7 +559,7 @@ DiastolicBP                   0.0245
 
 ---
 
-## 🎯 CONCLUSION & KEY TAKEAWAYS (1 minute)
+##  CONCLUSION & KEY TAKEAWAYS (1 minute)
 
 **[FINAL SLIDE]**
 
@@ -619,7 +619,7 @@ DiastolicBP                   0.0245
 
 ---
 
-## 🎤 ANTICIPATED QUESTIONS & RESPONSES
+##  ANTICIPATED QUESTIONS & RESPONSES
 
 ### Q1: "How did you handle class imbalance?"
 **A:** "Our dataset was perfectly balanced—50% Alzheimer's, 50% non-Alzheimer's—so class imbalance wasn't an issue. However, in real-world deployment where Alzheimer's might be less common, we would use techniques like SMOTE (Synthetic Minority Over-sampling), class weights, or threshold adjustment to maintain good recall while managing precision."
@@ -680,7 +680,7 @@ DiastolicBP                   0.0245
 
 ---
 
-## 📋 PRESENTATION CHECKLIST
+##  PRESENTATION CHECKLIST
 
 **Before Presenting:**
 - [ ] Run all cells to ensure outputs are current
@@ -710,7 +710,7 @@ DiastolicBP                   0.0245
 
 ---
 
-## 🎬 OPENING AND CLOSING
+##  OPENING AND CLOSING
 
 ### Strong Opening:
 > "Section 3 answers the critical question: Can machine learning predict Alzheimer's disease effectively? The short answer is yes—with 97.89% accuracy. Let me show you how we got there and what it means for patient care."
@@ -720,4 +720,4 @@ DiastolicBP                   0.0245
 
 ---
 
-**Good luck with your presentation! 🚀**
+**Good luck with your presentation! **

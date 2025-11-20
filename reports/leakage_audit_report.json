@@ -1,0 +1,166 @@
+{
+  "target": "Diagnosis",
+  "cognitive_features_detected": [
+    "ADL",
+    "BehavioralProblems",
+    "Confusion",
+    "Disorientation",
+    "FunctionalAssessment",
+    "MMSE",
+    "MemoryComplaints",
+    "PersonalityChanges"
+  ],
+  "top_suspicious_by_auc_mi": [
+    {
+      "feature": "FunctionalAssessment",
+      "single_feature_auc": 0.7214031298548748,
+      "mutual_info": 0.09545358402192017
+    },
+    {
+      "feature": "ADL",
+      "single_feature_auc": 0.6995235118032663,
+      "mutual_info": 0.07656440078877091
+    },
+    {
+      "feature": "MMSE",
+      "single_feature_auc": 0.6426584820582775,
+      "mutual_info": 0.06627780423788798
+    },
+    {
+      "feature": "MemoryComplaints",
+      "single_feature_auc": 0.6302025311659277,
+      "mutual_info": 0.03651731030771299
+    },
+    {
+      "feature": "BehavioralProblems",
+      "single_feature_auc": 0.585316490470236,
+      "mutual_info": 0.03028084226746497
+    },
+    {
+      "feature": "SleepQuality",
+      "single_feature_auc": 0.5338543442840362,
+      "mutual_info": 0.009691288312665636
+    },
+    {
+      "feature": "CholesterolHDL",
+      "single_feature_auc": 0.5256867871622901,
+      "mutual_info": 0.01734933502944913
+    },
+    {
+      "feature": "EducationLevel",
+      "single_feature_auc": 0.5248365920200069,
+      "mutual_info": 0.006274133774219592
+    },
+    {
+      "feature": "PatientID",
+      "single_feature_auc": 0.5247669660111401,
+      "mutual_info": 0.01966943250283526
+    },
+    {
+      "feature": "CholesterolLDL",
+      "single_feature_auc": 0.519327611685802,
+      "mutual_info": 0.0
+    },
+    {
+      "feature": "BMI",
+      "single_feature_auc": 0.5159410405062332,
+      "mutual_info": 0.0
+    },
+    {
+      "feature": "FamilyHistoryAlzheimers",
+      "single_feature_auc": 0.5149421204198401,
+      "mutual_info": 0.0
+    },
+    {
+      "feature": "CholesterolTriglycerides",
+      "single_feature_auc": 0.5139308855291577,
+      "mutual_info": 0.0
+    },
+    {
+      "feature": "Hypertension",
+      "single_feature_auc": 0.5130603235951651,
+      "mutual_info": 0.004867859808918462
+    },
+    {
+      "feature": "Diabetes",
+      "single_feature_auc": 0.5117904778144065,
+      "mutual_info": 0.0010043879420265078
+    },
+    {
+      "feature": "CardiovascularDisease",
+      "single_feature_auc": 0.5115707059224736,
+      "mutual_info": 0.00041450936385500903
+    },
+    {
+      "feature": "Gender",
+      "single_feature_auc": 0.5109668068659771,
+      "mutual_info": 0.00460986947855635
+    },
+    {
+      "feature": "SystolicBP",
+      "single_feature_auc": 0.5095524989579782,
+      "mutual_info": 0.0061481692041331915
+    },
+    {
+      "feature": "Ethnicity",
+      "single_feature_auc": 0.5094525595847069,
+      "mutual_info": 0.0
+    },
+    {
+      "feature": "Disorientation",
+      "single_feature_auc": 0.5094070895381001,
+      "mutual_info": 0.007476288152763688
+    },
+    {
+      "feature": "Confusion",
+      "single_feature_auc": 0.5081031412223864,
+      "mutual_info": 0.00603245775996708
+    },
+    {
+      "feature": "PersonalityChanges",
+      "single_feature_auc": 0.5077190140578227,
+      "mutual_info": 0.0
+    },
+    {
+      "feature": "HeadInjury",
+      "single_feature_auc": 0.5064908491531204,
+      "mutual_info": 0.0
+    },
+    {
+      "feature": "DietQuality",
+      "single_feature_auc": 0.5052347391156076,
+      "mutual_info": 0.0
+    },
+    {
+      "feature": "AlcoholConsumption",
+      "single_feature_auc": 0.5052110567996666,
+      "mutual_info": 0.017780243805284757
+    },
+    {
+      "feature": "PhysicalActivity",
+      "single_feature_auc": 0.5035419271721421,
+      "mutual_info": 0.00794660101967315
+    },
+    {
+      "feature": "CholesterolTotal",
+      "single_feature_auc": 0.5034964571255353,
+      "mutual_info": 0.00033816368176053935
+    },
+    {
+      "feature": "DifficultyCompletingTasks",
+      "single_feature_auc": 0.5034651964684931,
+      "mutual_info": 0.004136099225946488
+    },
+    {
+      "feature": "Age",
+      "single_feature_auc": 0.5034585654200296,
+      "mutual_info": 0.0
+    },
+    {
+      "feature": "DiastolicBP",
+      "single_feature_auc": 0.5031161191315221,
+      "mutual_info": 0.0
+    }
+  ],
+  "proxy_flags": []
+}

@@ -1,202 +1,220 @@
-# Healthcare Predictive Analytics: Alzheimer's Disease Risk Prediction
+# Alzheimer's Disease Risk Prediction Platform
 
-## Project Overview
+End-to-end healthcare analytics project that combines exploratory analysis, statistical testing, interactive dashboards, high-performing machine learning models, and rigorous leakage/validation safeguards to support early Alzheimer's detection.
 
-This project presents a comprehensive machine learning framework for predicting Alzheimer's disease risk using patient health metrics and demographic data. The analysis includes exploratory data analysis, statistical hypothesis testing, interactive visualizations, and optimized predictive models.
+---
 
-## Project Structure
+##  Snapshot
 
-```
-├── data/                           # Dataset storage
-│   ├── raw_alzheimers_data.csv    # Original patient dataset
-│   └── processed_alzheimers_data.csv  # Preprocessed and standardized data
-├── notebooks/                      # Jupyter notebooks
-│   └── alzheimers_analysis.ipynb  # Main analysis and modeling notebook
-├── reports/                        # Visualizations and analysis outputs
-│   ├── age_distribution.png
-│   ├── bmi_distribution.png
-│   ├── boxplots_comparisons.png
-│   ├── cognitive_assessments.png
-│   ├── cognitive_pairplot.png
-│   ├── confusion_matrices.png
-│   ├── correlation_matrix.png
-│   ├── diagnosis_distribution.png
-│   ├── enhanced_correlation_heatmap.png
-│   ├── feature_importance.png
-│   ├── gender_distribution.png
-│   ├── model_performance_comparison.png
-│   ├── pca_visualization.png
-│   ├── roc_curves.png
-│   ├── scatter_plots_relationships.png
-│   └── tuned_model_comparison.png
-├── models/                         # Trained machine learning models
-│   ├── tuned_random_forest.pkl
-│   ├── tuned_gradient_boosting.pkl
-│   ├── tuned_logistic_regression.pkl
-│   ├── scaler.pkl
-│   └── feature_names.pkl
-└── docs/                          # Project documentation
-    ├── README.md                  # This file
-    ├── requirements.txt           # Python dependencies
-    └── environment.yml            # Conda environment specification
-```
+| Item | Details |
+| --- | --- |
+| Dataset | 2,149 patients · 35 features (demographics, lifestyle, medical history, cognitive tests) |
+| Best model | Tuned Gradient Boosting · **ROC-AUC 97.89% · Accuracy 94.75% · Recall 94.25% · Precision 95.24%** |
+| Notebook | `notebooks/alzheimers_analysis.ipynb` (EDA → stats → ML → deployment) |
+| Validation | Leakage audit, dual-model comparison, temporal/site readiness, nested CV (5× outer · 3× inner) |
+| Deliverables | Reports/plots, saved models, inference artifacts, presentation scripts, validation plan |
 
-## Objectives
+---
 
-1. Conduct thorough exploratory data analysis to understand patient characteristics
-2. Perform statistical hypothesis testing to identify significant health metric associations
-3. Develop interactive visualizations for insight communication
-4. Build and optimize machine learning models for accurate risk prediction
-5. Deploy production-ready models for clinical decision support
+##  Quick Links
 
-## Methodology
+- Notebook: `notebooks/alzheimers_analysis.ipynb`
+- Saved models: `models/`
+- Validation script: `scripts/audit_validation.py`
+- Documentation & presentations: `docs/`
+- Visual outputs & JSON reports: `reports/`
 
-### Data Analysis
-- Comprehensive data quality assessment
-- Missing value analysis and outlier detection
-- Correlation analysis between features and outcomes
-- Statistical hypothesis testing (t-tests, chi-square, ANOVA)
+---
 
-### Visualization
-- Static visualizations using Matplotlib and Seaborn
-- Interactive dashboards using Plotly
-- Multi-dimensional data exploration tools
-- Feature relationship analysis plots
+##  Quick Start
 
-### Machine Learning
-- Four baseline models: Logistic Regression, Random Forest, Gradient Boosting, Neural Network
-- Five-fold cross-validation for robust evaluation
-- Hyperparameter optimization using GridSearchCV and RandomizedSearchCV
-- Comprehensive performance metrics: accuracy, precision, recall, F1-score, ROC-AUC
+### 1. Set up the environment (PowerShell example)
 
-## Key Results
+```powershell
+# (optional) create virtual environment
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 
-- Successfully trained and optimized four machine learning models
-- Identified key predictive features for Alzheimer's diagnosis
-- Achieved strong model performance with validated generalization capability
-- Generated 16 comprehensive visualizations for data insights
-- Created production-ready models with deployment artifacts
-
-## Installation and Setup
-
-### Prerequisites
-- Python 3.8 or higher
-- Jupyter Notebook or JupyterLab
-- Required packages listed in `requirements.txt`
-
-### Installation
-
-1. Clone or download the project repository
-
-2. Create a virtual environment (recommended):
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. Install required packages:
-```bash
+# install dependencies
 pip install -r docs/requirements.txt
 ```
 
-Alternatively, using Conda:
-```bash
+Or, with Conda:
+
+```powershell
 conda env create -f docs/environment.yml
 conda activate alzheimers-prediction
 ```
 
-## Usage
+### 2. Reproduce the analysis notebook
 
-### Running the Analysis
-
-1. Navigate to the project directory
-2. Launch Jupyter Notebook:
-```bash
-jupyter notebook
+```powershell
+jupyter notebook notebooks/alzheimers_analysis.ipynb
 ```
-3. Open `notebooks/alzheimers_analysis.ipynb`
-4. Run cells sequentially to reproduce the analysis
+Run cells top-to-bottom to regenerate EDA, statistics, ML training, tuning, and export artifacts to `models/` and `reports/`.
 
-### Using Saved Models
+### 3. Run automated leakage + validation checks
+
+```powershell
+python scripts/audit_validation.py
+```
+
+Outputs saved to `reports/`:
+- `leakage_audit_report.json` – single-feature AUC & mutual information flags
+- `with_without_cognitive_metrics.json` – pre-screen vs diagnostic model comparison
+- `temporal_site_validation.json` – time/site split readiness summary
+- `nested_cv_summary.json` – unbiased outer-fold AUC scores
+
+### 4. Use a saved model for inference
 
 ```python
 import joblib
 import pandas as pd
-import numpy as np
 
-# Load the model and preprocessing artifacts
-model = joblib.load('models/tuned_random_forest.pkl')
-scaler = joblib.load('models/scaler.pkl')
-feature_names = joblib.load('models/feature_names.pkl')
+model = joblib.load("models/tuned_gradient_boosting.pkl")
+scaler = joblib.load("models/scaler.pkl")
+feature_names = joblib.load("models/feature_names.pkl")
 
-# Prepare new patient data (ensure same feature order)
-new_patient_data = pd.DataFrame([patient_features], columns=feature_names)
-
-# Scale features
-scaled_data = scaler.transform(new_patient_data)
-
-# Make prediction
-prediction = model.predict(scaled_data)
-probability = model.predict_proba(scaled_data)
-
-print(f"Prediction: {prediction[0]}")  # 0 = No Alzheimer's, 1 = Alzheimer's
-print(f"Probability: {probability[0]}")
+patient = pd.DataFrame([patient_features], columns=feature_names)
+prob = model.predict_proba(scaler.transform(patient))[0]
+print({"prediction": int(prob[1] >= 0.5), "probabilities": prob.tolist()})
 ```
-
-## Model Performance
-
-All models were evaluated using:
-- Accuracy
-- Precision
-- Recall
-- F1-Score
-- ROC-AUC
-
-The optimized models show strong predictive performance with validated generalization through cross-validation.
-
-## Features
-
-The analysis uses the following patient features:
-- Demographics: Age, Gender, Ethnicity, Education Level
-- Lifestyle factors: BMI, Smoking, Alcohol Consumption, Physical Activity, Diet Quality, Sleep Quality
-- Medical history: Family History, Cardiovascular Disease, Diabetes, Depression, Head Injury, Hypertension
-- Clinical measurements: Systolic BP, Diastolic BP, Cholesterol levels
-- Cognitive assessments: MMSE, Functional Assessment, Memory Complaints, ADL
-
-## Clinical Implications
-
-The developed predictive models provide:
-- Reliable risk assessment tools for early Alzheimer's detection
-- Feature importance analysis for actionable clinical insights
-- Evidence-based decision support for healthcare providers
-- Framework for patient stratification and intervention planning
-
-## Future Work
-
-- Prospective validation with new patient cohorts
-- Integration with electronic health record systems
-- Development of web-based prediction interface
-- Regular model retraining with updated data
-- Extension to other neurodegenerative diseases
-
-## Contributors
-
-DEPI Graduate Project Team
-
-## License
-
-This project is intended for educational and research purposes.
-
-## Contact
-
-For questions or collaboration opportunities, please contact the project team.
-
-## Acknowledgments
-
-- Healthcare data providers
-- DEPI program coordinators
-- Clinical advisors and domain experts
 
 ---
 
-**Note**: This project follows best practices for reproducible research and clinical ML model development.
+##  Repository Map
+
+```
+ data/                        # Raw & processed CSVs (keep out of VCS if sensitive)
+ notebooks/
+    alzheimers_analysis.ipynb# Main analysis notebook (79 cells)
+    models/                  # Notebook-generated copies of models (historical)
+ models/                      # Canonical production artifacts (use these!)
+    tuned_gradient_boosting.pkl
+    tuned_random_forest.pkl
+    tuned_logistic_regression.pkl
+    scaler.pkl
+    feature_names.pkl
+ api/                         # Production REST API (FastAPI)
+    main.py                  # API application with endpoints
+    config.py                # Configuration management
+    models.py                # Pydantic request/response schemas
+    requirements.txt         # API dependencies
+    test_api.py              # Test suite with sample patients
+    README.md                # API documentation & deployment guide
+ scripts/
+    audit_validation.py      # Leakage audit + nested CV runner
+ reports/                     # Static plots + JSON metrics
+    *.png                    # EDA & performance charts
+    leakage_audit_report.json
+    with_without_cognitive_metrics.json
+    temporal_site_validation.json
+    nested_cv_summary.json
+ docs/
+    README.md (this file)
+    requirements.txt
+    environment.yml
+    SECTION_3_PRESENTATION_SCRIPT.md
+    PRESENTATION_OUTLINE.md
+    FOCUSED_PRESENTATION.md
+    LEAKAGE_AND_VALIDATION.md
+ .gitignore, .gitattributes
+```
+
+> **Note:** `notebooks/models/` keeps legacy copies so the Jupyter notebook can run offline. For deployment/inference, always consume artifacts from `models/` at the repo root to avoid divergence.
+
+---
+
+##  Data → Insight → Model Workflow
+
+1. **Exploratory Data Analysis** – distribution plots, pairplots, demographic/lifestyle summaries, PCA visualizations.
+2. **Statistical Testing** – Pearson/Spearman correlations, t-tests, chi-square, ANOVA with effect sizes and interactive Plotly dashboards.
+3. **Machine Learning** – 32 engineered features, StandardScaler, stratified 80/20 split, four algorithms (LR, RF, GB, MLP), 5-fold CV, hyperparameter tuning, persistence to disk.
+4. **Validation & Deployment Prep** – confusion matrices, ROC curves, feature importance, leakage checks, nested CV, model saving, inference demo cell.
+
+---
+
+##  Validation & Leakage Controls
+
+| Check | What it does | Artifact |
+| --- | --- | --- |
+| Leakage audit | Single-feature ROC-AUC & mutual information to flag label proxies (e.g., MMSE) | `reports/leakage_audit_report.json` |
+| Two-model strategy | Compare models with vs without cognitive assessments (pre-screen vs diagnostic) | `reports/with_without_cognitive_metrics.json` |
+| Temporal/site readiness | Detect date/site columns and outline chronological or leave-one-site-out splits | `reports/temporal_site_validation.json` |
+| Nested cross-validation | 5× outer / 3× inner CV for LR & GB with per-fold AUC stats | `reports/nested_cv_summary.json` |
+
+All checks run through `python scripts/audit_validation.py`.
+
+---
+
+##  Models & Inference Guidance
+
+- Canonical artifacts stored in `models/`
+- `models/feature_names.pkl` encodes the training feature order (use it to align new patient rows)
+- `models/scaler.pkl` must be applied before scoring
+- Decision threshold default is 0.5; adjust using probability outputs to meet clinical recall/precision targets
+- Log each prediction with model version + timestamp when integrating into an API or dashboard
+
+---
+
+##  Key Metrics & Insights
+
+- Tuned Gradient Boosting = **97.89% ROC-AUC**, only 21 errors on 400-patient test set
+- Top features: MMSE (18.4%), FunctionalAssessment (12.6%), MemoryComplaints (9.9%) – aligns with clinical expectations
+- Probability outputs enable risk-tiering (e.g., <0.4 low, 0.4–0.65 moderate, etc.)
+- Feature importance confirms the model learns clinically meaningful patterns rather than spurious correlations
+
+---
+
+##  Production API Deployment
+
+A production-ready FastAPI REST API is available for real-time predictions:
+
+```powershell
+# Install API dependencies
+pip install -r api/requirements.txt
+
+# Start the API server
+uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+**Key Features:**
+-  Real-time predictions with <20ms latency
+-  Automatic input validation (Pydantic schemas)
+-  Risk stratification (Low, Moderate, High, Critical)
+-  Interactive API docs at `/docs`
+-  Health monitoring at `/health`
+-  CORS-enabled for web/mobile integration
+
+**Quick Test:**
+```powershell
+# Check API health
+curl http://localhost:8000/health
+
+# Run comprehensive test suite
+python api/test_api.py
+```
+
+ **Full documentation:** See `api/README.md` for endpoints, examples, deployment options (Docker, multi-worker), and security configuration.
+
+---
+
+##  Future Enhancements
+
+- External prospective validation across hospitals and demographic segments
+- Probability calibration (isotonic/Platt) and threshold tuning per clinical policy
+- SHAP/ICE explainability dashboards for clinicians
+- Data drift monitoring + scheduled retraining
+- Batch prediction API endpoint for population screening
+
+---
+
+##  Contact & License
+
+- Project team: DEPI Graduation Project (2025)
+- License: Educational & research use; please cite the authors when reusing materials
+- Questions / collaborations: open an issue or reach out via the DEPI coordinators
+
+---
+
+**Reminder:** Keep `models/` as the single source of truth for deployment artifacts. Remove or regenerate `notebooks/models/` copies if you need to slim the repo or refresh the notebook outputs.

@@ -1,0 +1,8 @@
+{
+  "temporal": {
+    "message": "No date/year column detected; temporal split skipped."
+  },
+  "site": {
+    "message": "No site/hospital column detected; site validation suggestion recorded."
+  }
+}

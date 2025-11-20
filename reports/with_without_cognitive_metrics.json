@@ -1,0 +1,80 @@
+{
+  "with_cognitive": {
+    "features": [
+      "Age",
+      "Gender",
+      "Ethnicity",
+      "EducationLevel",
+      "BMI",
+      "Smoking",
+      "AlcoholConsumption",
+      "PhysicalActivity",
+      "DietQuality",
+      "SleepQuality",
+      "FamilyHistoryAlzheimers",
+      "CardiovascularDisease",
+      "Diabetes",
+      "Depression",
+      "HeadInjury",
+      "Hypertension",
+      "SystolicBP",
+      "DiastolicBP",
+      "CholesterolTotal",
+      "CholesterolLDL",
+      "CholesterolHDL",
+      "MMSE",
+      "FunctionalAssessment",
+      "MemoryComplaints",
+      "BehavioralProblems",
+      "ADL",
+      "Confusion",
+      "Disorientation",
+      "PersonalityChanges",
+      "DifficultyCompletingTasks",
+      "Forgetfulness"
+    ],
+    "metrics": {
+      "accuracy": 0.9418604651162791,
+      "precision": 0.9150326797385621,
+      "recall": 0.9210526315789473,
+      "f1": 0.9180327868852459,
+      "roc_auc": 0.9475577432790611,
+      "brier": 0.05413104983411789
+    }
+  },
+  "without_cognitive": {
+    "features": [
+      "Age",
+      "Gender",
+      "Ethnicity",
+      "EducationLevel",
+      "BMI",
+      "Smoking",
+      "AlcoholConsumption",
+      "PhysicalActivity",
+      "DietQuality",
+      "SleepQuality",
+      "FamilyHistoryAlzheimers",
+      "CardiovascularDisease",
+      "Diabetes",
+      "Depression",
+      "HeadInjury",
+      "Hypertension",
+      "SystolicBP",
+      "DiastolicBP",
+      "CholesterolTotal",
+      "CholesterolLDL",
+      "CholesterolHDL",
+      "DifficultyCompletingTasks",
+      "Forgetfulness"
+    ],
+    "metrics": {
+      "accuracy": 0.6162790697674418,
+      "precision": 0.32432432432432434,
+      "recall": 0.07894736842105263,
+      "f1": 0.12698412698412698,
+      "roc_auc": 0.47070238546005305,
+      "brier": 0.24502365429762898
+    }
+  }
+}
