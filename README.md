@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #  Alzheimer's Disease Risk Prediction Platform
 
 **Complete web application with machine learning model for early Alzheimer's detection**
@@ -456,3 +457,6 @@ uvicorn api.main:app --host 0.0.0.0 --port 8000 --workers 4
 **Start now**: `python api/start_api.py --reload`
 
 **Access at**: http://localhost:8000
+=======
+# Alzheimer-Risk-Prediction
+>>>>>>> 43acde996d781d8234d5b1c486433feb6b0308de
