@@ -475,9 +475,42 @@ Quick deploy to Render's free tier:
 
 **Full Guide**: See [RENDER_DEPLOYMENT.md](RENDER_DEPLOYMENT.md) for complete instructions.
 
+### Deploy to DigitalOcean App Platform
+
+Deploy to DigitalOcean for better performance and no cold starts:
+
+1. **Push to GitHub**
+   ```bash
+   git add .
+   git commit -m "Ready for deployment"
+   git push origin main
+   ```
+
+2. **Deploy on DigitalOcean**
+   - Go to https://cloud.digitalocean.com/apps
+   - Click "Create App"
+   - Connect your GitHub repository
+   - Select: **ShadyKishk77/Alzheimer-Risk-Prediction**
+   - Build Command: `pip install -r requirements.txt && python scripts/regenerate_models.py`
+   - Run Command: `uvicorn api.main:app --host 0.0.0.0 --port 8080`
+   - Choose **Basic** plan ($5/month)
+   - Click "Launch App"
+
+3. **Access Your App**
+   - URL: `https://alzheimer-risk-prediction-xxxxx.ondigitalocean.app`
+   - Health: `https://your-app.ondigitalocean.app/health`
+   - Docs: `https://your-app.ondigitalocean.app/docs`
+
+**Benefits**: 
+- No cold starts (always running)
+- Better performance from start
+- Predictable pricing ($5/month)
+
+**Full Guide**: See [DIGITALOCEAN_DEPLOYMENT.md](DIGITALOCEAN_DEPLOYMENT.md) for complete instructions.
+
 ### Other Deployment Options
 
-- **Heroku**: Similar PaaS platform
+- **Heroku**: Similar PaaS platform ($7/month)
 - **Railway**: Free tier with better limits
 - **AWS/Azure/GCP**: Full control, more complex
 - **Docker**: Self-hosted containerized deployment

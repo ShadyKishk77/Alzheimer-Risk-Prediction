@@ -1,0 +1,30 @@
+name: alzheimer-risk-prediction
+region: nyc
+services:
+  - name: web
+    github:
+      repo: ShadyKishk77/Alzheimer-Risk-Prediction
+      branch: main
+      deploy_on_push: true
+    build_command: pip install --upgrade pip && pip install -r requirements.txt && python scripts/regenerate_models.py
+    run_command: uvicorn api.main:app --host 0.0.0.0 --port 8080
+    environment_slug: python
+    envs:
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: info
+      - key: PYTHON_VERSION
+        value: "3.9"
+    health_check:
+      http_path: /health
+      initial_delay_seconds: 30
+      period_seconds: 10
+      timeout_seconds: 5
+      success_threshold: 1
+      failure_threshold: 3
+    http_port: 8080
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    routes:
+      - path: /

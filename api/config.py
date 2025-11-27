@@ -40,7 +40,7 @@ class Settings(BaseSettings):
     
     # API configuration
     HOST: str = "0.0.0.0"
-    PORT: int = 8000
+    PORT: int = 8000  # Default for local, overridden by environment variable in production
     RELOAD: bool = False
     LOG_LEVEL: str = "info"
     ENVIRONMENT: str = "development"  # development or production
