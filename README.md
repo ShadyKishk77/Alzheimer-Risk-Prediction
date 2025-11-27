@@ -437,9 +437,50 @@ jupyter notebook notebooks/alzheimers_analysis.ipynb
 
 **For Deployment:**
 ```powershell
-# Production server
+# Production server (local)
 uvicorn api.main:app --host 0.0.0.0 --port 8000 --workers 4
+
+# Deploy to Render (cloud)
+# See RENDER_DEPLOYMENT.md for detailed instructions
 ```
+
+---
+
+## Cloud Deployment
+
+### Deploy to Render (Recommended)
+
+Quick deploy to Render's free tier:
+
+1. **Push to GitHub**
+   ```bash
+   git add .
+   git commit -m "Ready for deployment"
+   git push origin main
+   ```
+
+2. **Deploy on Render**
+   - Go to https://render.com
+   - Click "New +" → "Blueprint"
+   - Connect your GitHub repository
+   - Render automatically detects `render.yaml`
+   - Click "Apply" and wait 5-10 minutes
+
+3. **Access Your App**
+   - URL: `https://your-app-name.onrender.com`
+   - Health: `https://your-app-name.onrender.com/health`
+   - Docs: `https://your-app-name.onrender.com/docs`
+
+**Note**: Free tier spins down after 15 minutes of inactivity. First request takes 30-60 seconds.
+
+**Full Guide**: See [RENDER_DEPLOYMENT.md](RENDER_DEPLOYMENT.md) for complete instructions.
+
+### Other Deployment Options
+
+- **Heroku**: Similar PaaS platform
+- **Railway**: Free tier with better limits
+- **AWS/Azure/GCP**: Full control, more complex
+- **Docker**: Self-hosted containerized deployment
 
 ---
 

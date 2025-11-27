@@ -43,6 +43,7 @@ class Settings(BaseSettings):
     PORT: int = 8000
     RELOAD: bool = False
     LOG_LEVEL: str = "info"
+    ENVIRONMENT: str = "development"  # development or production
     
     # Security
     CORS_ORIGINS: List[str] = ["*"]  # Restrict in production
